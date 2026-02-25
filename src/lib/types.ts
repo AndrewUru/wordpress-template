@@ -33,14 +33,49 @@ export type WCImage = {
   alt: string;
 };
 
+export type WCProductAttribute = {
+  id: number;
+  name: string;
+  slug?: string;
+  variation?: boolean;
+  options?: string[];
+};
+
+export type WCVariationAttribute = {
+  id?: number;
+  name: string;
+  slug?: string;
+  option: string;
+};
+
+export type WCVariation = {
+  id: number;
+  price: string;
+  regular_price?: string;
+  sale_price?: string;
+  on_sale?: boolean;
+  stock_status?: string;
+  image?: WCImage;
+  attributes?: WCVariationAttribute[];
+};
+
 export type WCProduct = {
   id: number;
   name: string;
   slug: string;
+  type?: string;
+  permalink?: string;
   description: string;
   short_description: string;
   price: string;
+  regular_price?: string;
+  sale_price?: string;
   price_html?: string;
+  on_sale?: boolean;
+  stock_status?: string;
+  sku?: string;
+  categories?: WCCategory[];
+  attributes?: WCProductAttribute[];
   images?: WCImage[];
 };
 

@@ -10,6 +10,14 @@ export function Header() {
         <nav className="row nav">
           <Link href="/blog">Blog</Link>
           <Link href="/shop">Shop</Link>
+          <a
+            href="https://github.com/AndrewUru/wordpress-template"
+            target="_blank"
+            rel="noreferrer"
+            className="button headerCloneButton"
+          >
+            Clonar repo
+          </a>
         </nav>
       </div>
     </header>

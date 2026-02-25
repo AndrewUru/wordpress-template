@@ -15,6 +15,15 @@ export async function fetchJson<T>(
   init: RequestInit & { next?: { revalidate?: number; tags?: string[] } } = {},
   timeoutMs = 10000
 ): Promise<T> {
+  const result = await fetchJsonWithMeta<T>(url, init, timeoutMs);
+  return result.data;
+}
+
+export async function fetchJsonWithMeta<T>(
+  url: string,
+  init: RequestInit & { next?: { revalidate?: number; tags?: string[] } } = {},
+  timeoutMs = 10000
+): Promise<{ data: T; headers: Headers }> {
   const controller = new AbortController();
   const timeout = setTimeout(() => controller.abort(), timeoutMs);
 
@@ -27,10 +36,10 @@ export async function fetchJson<T>(
     }
 
     if (!text) {
-      return null as T;
+      return { data: null as T, headers: res.headers };
     }
 
-    return JSON.parse(text) as T;
+    return { data: JSON.parse(text) as T, headers: res.headers };
   } catch (error) {
     if (error instanceof SyntaxError) {
       throw new Error(`Invalid JSON response from ${url}`);

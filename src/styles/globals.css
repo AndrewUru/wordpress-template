@@ -105,6 +105,10 @@ a {
   border-radius: 8px;
 }
 
+.headerCloneButton {
+  margin-top: 0;
+}
+
 .htmlContent {
   display: grid;
   gap: 0.75rem;
@@ -116,9 +120,785 @@ a {
   font-weight: 600;
 }
 
+.productImageLink {
+  display: block;
+  margin: -1rem -1rem 0.75rem;
+}
+
+.productImage {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: 12px 12px 0 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.shopPage {
+  gap: 1.25rem;
+}
+
+.shopHero {
+  padding: 1.5rem;
+  border-radius: 18px;
+  background: linear-gradient(130deg, #dffaf4 0%, #f4fbfa 45%, #eff8ff 100%);
+  border: 1px solid #b4e5db;
+}
+
+.shopHero h1 {
+  margin: 0.2rem 0 0.35rem;
+}
+
+.shopEyebrow {
+  margin: 0;
+  font-size: 0.76rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #0f766e;
+  font-weight: 700;
+}
+
+.shopLead {
+  margin: 0;
+  max-width: 720px;
+  color: #1f2937;
+}
+
+.shopKpis {
+  margin-top: 1rem;
+  display: grid;
+  gap: 0.8rem;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.shopKpis .card {
+  padding: 0.9rem;
+  background: rgba(255, 255, 255, 0.75);
+}
+
+.shopKpis p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+.shopKpis strong {
+  font-size: 1.15rem;
+}
+
+.shopFilters {
+  padding: 1rem;
+}
+
+.shopFiltersHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 0.8rem;
+}
+
+.shopFiltersHeader h2 {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.shopResetLink {
+  color: #0f766e;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.shopChips {
+  display: flex;
+  gap: 0.6rem;
+  overflow-x: auto;
+  padding-bottom: 0.2rem;
+  margin-top: 0.8rem;
+}
+
+.shopChip {
+  white-space: nowrap;
+  border: 1px solid var(--line);
+  background: #fff;
+  border-radius: 999px;
+  padding: 0.45rem 0.8rem;
+  font-size: 0.9rem;
+  color: #0f172a;
+}
+
+.shopChipActive {
+  background: #0f766e;
+  color: #fff;
+  border-color: #0f766e;
+}
+
+.shopChipMuted {
+  background: #f1f5f9;
+  color: #475569;
+}
+
+.shopFilterForm label {
+  display: block;
+  font-size: 0.9rem;
+  color: var(--muted);
+  margin-bottom: 0.4rem;
+}
+
+.shopFilterRow {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  flex-wrap: wrap;
+}
+
+.shopFilterRow select {
+  min-width: 260px;
+  flex: 1;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 0.55rem 0.65rem;
+  background: #fff;
+  color: var(--text);
+}
+
+.shopFilterApplyButton {
+  margin-top: 0;
+  border: 0;
+  cursor: pointer;
+}
+
+.shopToolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.shopMeta {
+  margin: 0;
+  color: var(--muted);
+}
+
+.shopPagination {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.shopPageButton,
+.shopPageNumber {
+  border: 1px solid var(--line);
+  background: #fff;
+  border-radius: 10px;
+  padding: 0.45rem 0.75rem;
+  font-weight: 600;
+}
+
+.shopPageButton[aria-disabled="true"] {
+  pointer-events: none;
+  opacity: 0.45;
+}
+
+.shopPageNumbers {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.shopPageNumberActive {
+  background: #0f766e;
+  color: #fff;
+  border-color: #0f766e;
+}
+
+.productPageShell {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: 1.1fr 0.9fr;
+}
+
+.productGallery,
+.productBuyPanel {
+  padding: 1rem;
+}
+
+.productPageMainImage {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: 12px;
+  border: 1px solid var(--line);
+  background: #fff;
+}
+
+.productImagePlaceholder {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  border-radius: 12px;
+  border: 1px dashed var(--line);
+  display: grid;
+  place-items: center;
+  color: var(--muted);
+}
+
+.productThumbGrid {
+  margin-top: 0.8rem;
+  display: grid;
+  gap: 0.6rem;
+  grid-template-columns: repeat(auto-fit, minmax(84px, 1fr));
+}
+
+.productThumbButton {
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 0.2rem;
+  background: #fff;
+  cursor: pointer;
+}
+
+.productThumbButtonActive {
+  border-color: #0f766e;
+  box-shadow: 0 0 0 2px rgba(15, 118, 110, 0.12);
+}
+
+.productThumbImage {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.productEyebrow {
+  margin: 0;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #0f766e;
+  font-weight: 700;
+}
+
+.productBuyPanel h1 {
+  margin: 0.45rem 0;
+}
+
+.productPriceNow {
+  margin: 0;
+  font-size: 1.7rem;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.productStockBadge {
+  display: inline-block;
+  margin-top: 0.75rem;
+  padding: 0.3rem 0.65rem;
+  border-radius: 999px;
+  background: #fee2e2;
+  color: #991b1b;
+  font-size: 0.82rem;
+  font-weight: 600;
+}
+
+.productStockBadgeOk {
+  background: #dcfce7;
+  color: #166534;
+}
+
+.productOptions {
+  margin-top: 1rem;
+  display: grid;
+  gap: 0.6rem;
+}
+
+.productOptions h2 {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.productOptionField {
+  display: grid;
+  gap: 0.3rem;
+}
+
+.productOptionField span {
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.productOptionField select {
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 0.55rem 0.65rem;
+  background: #fff;
+  color: var(--text);
+}
+
+.productCtas {
+  margin-top: 1.1rem;
+  display: grid;
+  gap: 0.6rem;
+}
+
+.productPrimaryCta {
+  text-align: center;
+  border: 0;
+  margin-top: 0;
+}
+
+.productSecondaryCta {
+  text-align: center;
+  border: 1px solid #0f766e;
+  color: #0f766e;
+  background: #ecfdf5;
+  border-radius: 8px;
+  padding: 0.6rem 0.9rem;
+  font-weight: 600;
+}
+
+.productButtonDisabled {
+  opacity: 0.55;
+}
+
+.productHint {
+  margin: 0.5rem 0 0;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.homeLanding {
+  gap: 1.25rem;
+}
+
+.homeTopHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+  padding: 0.9rem 1rem;
+}
+
+.homeTopHeaderLeft p {
+  margin: 0;
+  color: var(--muted);
+}
+
+.homeTopHeaderActions {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.homeTopHeaderButton {
+  margin-top: 0;
+}
+
+.homeTopHeaderLink {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 0.45rem 0.65rem;
+  background: #fff;
+}
+
+.homeHeroPro {
+  padding: 1.5rem;
+  border-radius: 18px;
+  background: linear-gradient(130deg, #c8fff1 0%, #f2fffb 42%, #ecf6ff 100%);
+  border: 1px solid #a7e6d6;
+}
+
+.homeTag {
+  margin: 0;
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #0f766e;
+}
+
+.homeHeroPro h1 {
+  margin: 0.35rem 0 0.6rem;
+  max-width: 800px;
+  line-height: 1.2;
+}
+
+.homeHeroPro p {
+  margin: 0;
+  max-width: 760px;
+}
+
+.homeHeroActions {
+  margin-top: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+.homeGhostButton {
+  display: inline-block;
+  margin-top: 0.5rem;
+  padding: 0.6rem 0.9rem;
+  border-radius: 8px;
+  border: 1px solid #0f766e;
+  color: #0f766e;
+  background: rgba(255, 255, 255, 0.85);
+}
+
+.homeStatusGrid {
+  margin-top: 1rem;
+  display: grid;
+  gap: 0.8rem;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.homeStatusGrid .card {
+  padding: 0.85rem;
+  background: rgba(255, 255, 255, 0.8);
+}
+
+.homeStatusGrid p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.84rem;
+}
+
+.homeStatusGrid strong {
+  font-size: 1.08rem;
+}
+
+.homeSetupAssistant {
+  display: grid;
+  gap: 1rem;
+}
+
+.homeSetupHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.homeSetupHeader h2,
+.homeSetupHeader p {
+  margin: 0;
+}
+
+.homePmRow {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  flex-wrap: wrap;
+}
+
+.homePmRow label {
+  color: var(--muted);
+  font-weight: 600;
+}
+
+.homePmRow select {
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 0.45rem 0.55rem;
+}
+
+.homeStepTabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.homeStepTab {
+  border: 1px solid var(--line);
+  background: #fff;
+  color: #0f172a;
+  border-radius: 999px;
+  padding: 0.45rem 0.75rem;
+  cursor: pointer;
+}
+
+.homeStepTabActive {
+  background: #0f766e;
+  color: #fff;
+  border-color: #0f766e;
+}
+
+.homeStepDetail h3,
+.homeStepDetail p {
+  margin: 0 0 0.4rem;
+}
+
+.homeCommandBox {
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 0.7rem;
+  display: grid;
+  gap: 0.7rem;
+}
+
+.homeCommandBox code {
+  word-break: break-all;
+}
+
+.homeCommandActions {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.homeCommandActions button,
+.homeBulkCopy button {
+  border: 1px solid var(--line);
+  background: #fff;
+  border-radius: 8px;
+  padding: 0.4rem 0.65rem;
+  cursor: pointer;
+}
+
+.homeBulkCopy {
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 0.8rem;
+}
+
+.homeBulkCopy p {
+  margin: 0 0 0.4rem;
+  color: var(--muted);
+}
+
+.homeBulkCopy pre {
+  margin: 0 0 0.6rem;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.homeValidator h3 {
+  margin: 0 0 0.5rem;
+}
+
+.homeValidatorRow {
+  display: flex;
+  gap: 0.7rem;
+  flex-wrap: wrap;
+}
+
+.homeValidatorRow input {
+  min-width: 260px;
+  flex: 1;
+  padding: 0.55rem 0.65rem;
+  border-radius: 10px;
+  border: 1px solid var(--line);
+}
+
+.homeValidationMsg {
+  margin: 0.6rem 0 0;
+  font-size: 0.92rem;
+}
+
+.homeValidationMsgsuccess {
+  color: #166534;
+}
+
+.homeValidationMsgerror {
+  color: #b91c1c;
+}
+
+.homeLivePreview {
+  display: grid;
+  gap: 1rem;
+}
+
+.homePreviewHeader h2,
+.homePreviewHeader p {
+  margin: 0;
+}
+
+.homePreviewHeader p {
+  margin-top: 0.35rem;
+  color: var(--muted);
+}
+
+.homePreviewGrid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.homePreviewColumn {
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 0.8rem;
+  background: #fff;
+}
+
+.homePreviewColumn h3 {
+  margin: 0 0 0.6rem;
+}
+
+.homePreviewItem {
+  display: grid;
+  grid-template-columns: 90px 1fr;
+  gap: 0.6rem;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 0.45rem;
+  margin-bottom: 0.55rem;
+}
+
+.homePreviewImage,
+.homeProductPreviewImage {
+  width: 100%;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.homePreviewImage {
+  aspect-ratio: 1 / 1;
+}
+
+.homePreviewItem strong {
+  display: block;
+  font-size: 0.92rem;
+  line-height: 1.35;
+}
+
+.homePreviewItem p {
+  margin: 0.25rem 0 0;
+  color: var(--muted);
+  font-size: 0.84rem;
+}
+
+.homePageList {
+  margin: 0;
+  padding-left: 1rem;
+  display: grid;
+  gap: 0.45rem;
+}
+
+.homeProductPreviewGrid {
+  display: grid;
+  gap: 0.6rem;
+}
+
+.homeProductPreviewCard {
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 0.45rem;
+  background: #fff;
+  display: grid;
+  gap: 0.4rem;
+}
+
+.homeProductPreviewImage {
+  aspect-ratio: 16 / 10;
+}
+
+.homeProductPreviewCard strong {
+  font-size: 0.92rem;
+  line-height: 1.35;
+}
+
+.homeProductPreviewCard p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.86rem;
+}
+
+.homePreviewNoImage {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  border-radius: 8px;
+  border: 1px dashed var(--line);
+  display: grid;
+  place-items: center;
+  color: var(--muted);
+  font-size: 0.82rem;
+}
+
+.homeMuted {
+  color: var(--muted);
+  margin: 0;
+}
+
+.homeEmptyState {
+  border: 1px dashed var(--line);
+  border-radius: 10px;
+  padding: 0.9rem;
+  background: #fff;
+}
+
+.homeEmptyState p {
+  margin: 0 0 0.4rem;
+}
+
+.homeLandingFooter {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.homeLandingFooterTitle {
+  margin: 0;
+  font-weight: 700;
+}
+
+.homeLandingFooterText {
+  margin: 0.3rem 0 0;
+  color: var(--muted);
+}
+
 @media (max-width: 640px) {
+  .nav {
+    flex-wrap: wrap;
+    justify-content: flex-end;
+  }
+
   .sectionHeader {
     flex-direction: column;
     align-items: flex-start;
+  }
+
+  .shopHero {
+    padding: 1rem;
+  }
+
+  .shopKpis {
+    grid-template-columns: 1fr;
+  }
+
+  .shopFiltersHeader {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .shopPagination {
+    justify-content: flex-start;
+  }
+
+  .homeHeroPro {
+    padding: 1rem;
+  }
+
+  .homeStatusGrid,
+  .homePreviewGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .homePreviewItem {
+    grid-template-columns: 1fr;
+  }
+
+  .homeLandingFooter {
+    align-items: flex-start;
+  }
+
+  .productPageShell {
+    grid-template-columns: 1fr;
   }
 }

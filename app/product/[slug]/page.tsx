@@ -1,7 +1,10 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { HtmlContent } from "@/components/HtmlContent";
-import { getProductBySlug, isWooEnabled } from "@/lib/woo";
+import { ProductDetailClient } from "@/components/ProductDetailClient";
+import { env } from "@/lib/env";
+import { HttpError } from "@/lib/http";
+import { getProductBySlug, getProductVariations, isWooEnabled } from "@/lib/woo";
 
 type Props = {
   params: { slug: string };
@@ -12,15 +15,23 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     return { title: "WooCommerce not configured" };
   }
 
-  const product = await getProductBySlug(params.slug);
-  if (!product) {
-    return { title: "Product not found" };
-  }
+  try {
+    const product = await getProductBySlug(params.slug);
+    if (!product) {
+      return { title: "Product not found" };
+    }
 
-  return {
-    title: product.name,
-    description: product.short_description?.replace(/<[^>]+>/g, "").slice(0, 160)
-  };
+    return {
+      title: product.name,
+      description: product.short_description?.replace(/<[^>]+>/g, "").slice(0, 160)
+    };
+  } catch (error) {
+    if (error instanceof HttpError && error.status === 401) {
+      return { title: "WooCommerce auth error" };
+    }
+
+    throw error;
+  }
 }
 
 export default async function ProductPage({ params }: Props) {
@@ -33,14 +44,31 @@ export default async function ProductPage({ params }: Props) {
     );
   }
 
-  const product = await getProductBySlug(params.slug);
-  if (!product) notFound();
+  try {
+    const product = await getProductBySlug(params.slug);
+    if (!product) notFound();
+    const variations = product.type === "variable" ? await getProductVariations(product.id) : [];
 
-  return (
-    <article className="stack">
-      <h1>{product.name}</h1>
-      <p className="price">{product.price_html ? "See product page pricing" : `$${product.price}`}</p>
-      <HtmlContent html={product.description || product.short_description || ""} />
-    </article>
-  );
+    return (
+      <article className="stack">
+        <ProductDetailClient product={product} variations={variations} wpBaseUrl={env.wpUrl} />
+        <section className="card">
+          <h2>Descripción</h2>
+          <HtmlContent html={product.description || product.short_description || ""} />
+        </section>
+      </article>
+    );
+  } catch (error) {
+    if (error instanceof HttpError && error.status === 401) {
+      return (
+        <section className="stack">
+          <h1>WooCommerce auth error</h1>
+          <p>No se pudo autenticar contra WooCommerce REST API (HTTP 401).</p>
+          <p>Revisa credenciales y permisos de tus API keys.</p>
+        </section>
+      );
+    }
+
+    throw error;
+  }
 }
