@@ -1,6 +1,8 @@
-# next-wp-woo-headless-starter
+# Next.js WordPress Headless Starter (WooCommerce Ready)
 
-Template repository for building a **Next.js (App Router)** frontend with **WordPress Headless via REST API** and optional **WooCommerce REST API**.
+Production-ready template for building a **Next.js (App Router)** frontend with **WordPress Headless via REST API** and optional **WooCommerce REST API**.
+
+Keywords: `nextjs wordpress starter`, `wordpress headless`, `woocommerce headless`, `next.js app router`, `wordpress rest api`, `vercel wordpress`.
 
 ![Node](https://img.shields.io/badge/Node-18%2B-339933?logo=node.js&logoColor=white)
 ![Next.js](https://img.shields.io/badge/Next.js-14-black?logo=nextdotjs)
