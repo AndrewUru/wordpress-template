@@ -1195,3 +1195,122 @@ a {
     min-height: auto;
   }
 }
+
+.homeCyberPage {
+  min-height: calc(100vh - 7.5rem);
+}
+
+.homeCyberContent {
+  position: relative;
+  z-index: 2;
+  min-height: calc(100vh - 7.5rem);
+  display: grid;
+  align-items: center;
+  padding: 4.5rem 0 2rem;
+}
+
+.homeCyberPage .homeLanding {
+  width: min(1120px, 94vw);
+  margin: 0 auto;
+  position: relative;
+}
+
+.homeCyberPage .homeHeroPro,
+.homeCyberPage .homeSetupAssistant,
+.homeCyberPage .homeLivePreview,
+.homeCyberPage .homeLandingFooter,
+.homeCyberPage .homeStatusGrid .card,
+.homeCyberPage .homePreviewColumn,
+.homeCyberPage .homePreviewItem,
+.homeCyberPage .homeProductPreviewCard,
+.homeCyberPage .homeEmptyState {
+  background: rgba(10, 10, 10, 0.45);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  box-shadow: 0 14px 40px rgba(0, 0, 0, 0.45);
+}
+
+.homeCyberPage .homeHeroPro,
+.homeCyberPage .homeSetupAssistant,
+.homeCyberPage .homeLivePreview,
+.homeCyberPage .homeLandingFooter {
+  border-radius: 14px;
+}
+
+.homeCyberPage .homeHeroPro {
+  background: linear-gradient(140deg, rgba(26, 6, 11, 0.78), rgba(4, 20, 24, 0.72));
+}
+
+.homeCyberPage .homeTag,
+.homeCyberPage .shopEyebrow {
+  color: #00f3ff;
+}
+
+.homeCyberPage h1,
+.homeCyberPage h2,
+.homeCyberPage h3,
+.homeCyberPage strong {
+  color: #fff;
+}
+
+.homeCyberPage p,
+.homeCyberPage li,
+.homeCyberPage .homeMuted {
+  color: rgba(224, 224, 224, 0.9);
+}
+
+.homeCyberPage .button,
+.homeCyberPage .homeStepTabActive,
+.homeCyberPage .shopChipActive {
+  background: #ff003c;
+  border-color: #ff003c;
+  color: #fff;
+}
+
+.homeCyberPage .homeGhostButton,
+.homeCyberPage .homeStepTab,
+.homeCyberPage .homeCommandActions button,
+.homeCyberPage .homeBulkCopy button,
+.homeCyberPage .homeTopHeaderLink {
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.02);
+  color: #e0e0e0;
+}
+
+.homeCyberPage .homeGhostButton:hover,
+.homeCyberPage .homeStepTab:hover,
+.homeCyberPage .homeCommandActions button:hover,
+.homeCyberPage .homeBulkCopy button:hover {
+  border-color: #00f3ff;
+  color: #00f3ff;
+}
+
+.homeCyberPage .homePmRow select,
+.homeCyberPage .homeValidatorRow input,
+.homeCyberPage .homeFilterRow select,
+.homeCyberPage .homeOptionField select,
+.homeCyberPage .homeCommandBox,
+.homeCyberPage .homeBulkCopy,
+.homeCyberPage .homePreviewNoImage {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  color: #e0e0e0;
+}
+
+.homeCyberPage code,
+.homeCyberPage pre {
+  font-family: "JetBrains Mono", monospace;
+}
+
+@media (max-width: 900px) {
+  .homeCyberContent {
+    padding-top: 4rem;
+    min-height: auto;
+  }
+
+  .homeCyberPage {
+    min-height: auto;
+    overflow: auto;
+  }
+}
