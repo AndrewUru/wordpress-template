@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Syncopate:wght@400;700&display=swap");
+
 :root {
   --bg: #f7f7f2;
   --panel: #ffffff;
@@ -900,5 +902,296 @@ a {
 
   .productPageShell {
     grid-template-columns: 1fr;
+  }
+}
+
+.docCyberPage {
+  --doc-bg: #030303;
+  --doc-card-bg: rgba(10, 10, 10, 0.4);
+  --doc-text: #e0e0e0;
+  --doc-accent: #ff003c;
+  --doc-accent-2: #00f3ff;
+  --doc-border: rgba(255, 255, 255, 0.1);
+  --doc-font-display: "Syncopate", sans-serif;
+  --doc-font-code: "JetBrains Mono", monospace;
+  position: relative;
+  min-height: calc(100vh - 7.5rem);
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+  background: var(--doc-bg);
+  color: var(--doc-text);
+  font-family: var(--doc-font-display);
+  overflow: hidden;
+}
+
+.docScanlines,
+.docVignette,
+.docNoise {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.docScanlines {
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0),
+    rgba(255, 255, 255, 0) 50%,
+    rgba(0, 0, 0, 0.2) 50%,
+    rgba(0, 0, 0, 0.2)
+  );
+  background-size: 100% 4px;
+  z-index: 10;
+}
+
+.docVignette {
+  background: radial-gradient(circle, transparent 40%, #000 120%);
+  z-index: 11;
+}
+
+.docNoise {
+  z-index: 12;
+  opacity: 0.07;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+
+.docHud {
+  position: absolute;
+  inset: 1rem;
+  z-index: 20;
+  pointer-events: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  font-family: var(--doc-font-code);
+  font-size: 10px;
+  color: rgba(255, 255, 255, 0.5);
+  text-transform: uppercase;
+}
+
+.docHudRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.docHud strong {
+  color: var(--doc-accent-2);
+}
+
+.docHudLine {
+  flex: 1;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.2);
+  margin: 0 1rem;
+  position: relative;
+}
+
+.docHudLine::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: -2px;
+  width: 5px;
+  height: 5px;
+  background: var(--doc-accent);
+}
+
+.docViewport {
+  position: relative;
+  min-height: calc(100vh - 7.5rem);
+  perspective: 1000px;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.docWorld {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform-style: preserve-3d;
+  transform: translate(-50%, -50%);
+  width: min(1160px, 94vw);
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.docCard {
+  min-height: 420px;
+  background: var(--doc-card-bg);
+  border: 1px solid var(--doc-border);
+  position: relative;
+  padding: 1.2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.5), 0 20px 50px rgba(0, 0, 0, 0.5);
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+@media (hover: hover) {
+  .docCard:hover {
+    border-color: var(--doc-accent);
+    box-shadow: 0 0 30px rgba(255, 0, 60, 0.2);
+    background: rgba(20, 20, 20, 0.8);
+    z-index: 100;
+  }
+}
+
+.docCard::before,
+.docCard::after {
+  content: "";
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border: 1px solid transparent;
+  transition: 0.3s;
+}
+
+.docCard::before {
+  top: -1px;
+  left: -1px;
+  border-top-color: var(--doc-text);
+  border-left-color: var(--doc-text);
+}
+
+.docCard::after {
+  bottom: -1px;
+  right: -1px;
+  border-bottom-color: var(--doc-text);
+  border-right-color: var(--doc-text);
+}
+
+.docCard:hover::before,
+.docCard:hover::after {
+  width: 100%;
+  height: 100%;
+  border-color: var(--doc-accent);
+}
+
+.docCardHeader {
+  border-bottom: 1px solid var(--doc-border);
+  padding-bottom: 0.8rem;
+  margin-bottom: 0.3rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: var(--doc-font-code);
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.docCardId {
+  color: var(--doc-accent);
+}
+
+.docCard h2 {
+  font-size: clamp(1.8rem, 2.2vw, 2.5rem);
+  line-height: 0.9;
+  margin: 0;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: #fff;
+  mix-blend-mode: hard-light;
+}
+
+.docCard ul,
+.docCard p {
+  margin: 0;
+  padding-left: 1rem;
+  font-family: var(--doc-font-code);
+  font-size: 0.8rem;
+  line-height: 1.6;
+}
+
+.docCard p {
+  padding-left: 0;
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.docCard pre {
+  margin: 0;
+  padding: 0.7rem;
+  border: 1px solid var(--doc-border);
+  background: rgba(255, 255, 255, 0.03);
+  overflow-x: auto;
+}
+
+.docCard code {
+  font-family: var(--doc-font-code);
+  font-size: 0.76rem;
+}
+
+.docCardFooter {
+  margin-top: auto;
+  font-family: var(--doc-font-code);
+  font-size: 0.7rem;
+  color: rgba(255, 255, 255, 0.4);
+  display: flex;
+  justify-content: space-between;
+}
+
+.docBigText {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  font-size: 15vw;
+  font-weight: 800;
+  color: transparent;
+  -webkit-text-stroke: 2px rgba(255, 255, 255, 0.15);
+  text-transform: uppercase;
+  white-space: nowrap;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  letter-spacing: -0.35rem;
+  mix-blend-mode: overlay;
+}
+
+.docCardOne {
+  transform: translateY(-2.5rem) rotateY(8deg);
+}
+
+.docCardTwo {
+  transform: translateY(1.2rem);
+}
+
+.docCardThree {
+  transform: translateY(-1rem) rotateY(-8deg);
+}
+
+@media (max-width: 900px) {
+  .docCyberPage {
+    min-height: auto;
+    overflow: auto;
+  }
+
+  .docViewport {
+    min-height: auto;
+    padding: 4.5rem 1rem 2rem;
+  }
+
+  .docBigText {
+    top: 2.2rem;
+    font-size: 20vw;
+  }
+
+  .docWorld {
+    position: relative;
+    transform: none;
+    top: auto;
+    left: auto;
+    width: 100%;
+    grid-template-columns: 1fr;
+  }
+
+  .docCardOne,
+  .docCardTwo,
+  .docCardThree {
+    transform: none;
+    min-height: auto;
   }
 }

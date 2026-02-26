@@ -8,6 +8,7 @@ export function Header() {
           next-wp-woo
         </Link>
         <nav className="row nav">
+          <Link href="/documentacion">Documentacion</Link>
           <Link href="/blog">Blog</Link>
           <Link href="/shop">Shop</Link>
           <a
@@ -23,3 +24,4 @@ export function Header() {
     </header>
   );
 }
+

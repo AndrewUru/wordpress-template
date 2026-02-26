@@ -1,5 +1,4 @@
 import { HomeLandingFooter } from "@/components/home/HomeLandingFooter";
-import { HomeLandingHeader } from "@/components/home/HomeLandingHeader";
 import { HomeLandingHero } from "@/components/home/HomeLandingHero";
 import { HomeLivePreview } from "@/components/home/HomeLivePreview";
 import { HomeSetupAssistant } from "@/components/HomeSetupAssistant";
@@ -23,7 +22,6 @@ export default async function HomePage() {
 
   return (
     <section className="stack homeLanding">
-      <HomeLandingHeader />
       <HomeLandingHero
         hasWpUrl={flags.hasWpUrl}
         hasWoo={flags.hasWoo}
