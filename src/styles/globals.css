@@ -58,31 +58,271 @@ a {
   padding: 1rem;
 }
 
-.siteHeader,
 .siteFooter {
-  border-bottom: 1px solid var(--line);
-  background: rgba(255, 255, 255, 0.7);
-  backdrop-filter: blur(6px);
-}
-
-.siteFooter {
-  border-top: 1px solid var(--line);
+  position: relative;
+  border-top: 1px solid rgba(255, 255, 255, 0.14);
   border-bottom: 0;
   margin-top: 2rem;
+  background: linear-gradient(120deg, rgba(8, 8, 12, 0.9), rgba(6, 16, 24, 0.9));
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  overflow: clip;
 }
 
-.siteHeader .container,
 .siteFooter .container {
   padding-top: 1rem;
   padding-bottom: 1rem;
 }
 
-.brand {
-  font-weight: 700;
+.siteHeader {
+  position: sticky;
+  top: 0;
+  z-index: 60;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.16);
+  background: linear-gradient(120deg, rgba(7, 6, 9, 0.88), rgba(5, 14, 20, 0.9));
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  overflow: clip;
 }
 
-.nav {
+.siteHeaderGlow {
+  position: absolute;
+  inset: -40% -15%;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 18% 45%, rgba(255, 0, 60, 0.22), transparent 34%),
+    radial-gradient(circle at 82% 55%, rgba(0, 243, 255, 0.22), transparent 30%);
+  filter: blur(32px);
+  animation: siteGlowPulse 9s ease-in-out infinite alternate;
+}
+
+.siteHeaderInner {
+  position: relative;
+  min-height: 4.6rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+}
+
+.siteBrand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+  color: #fff;
+  font-family: "Syncopate", sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  font-size: 0.86rem;
+  position: relative;
+  z-index: 2;
+}
+
+.siteBrandMark {
+  width: 2rem;
+  height: 2rem;
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.04);
+  color: #00f3ff;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.7rem;
+  border-radius: 999px;
+  box-shadow: 0 0 20px rgba(0, 243, 255, 0.25);
+}
+
+.siteMenuToggle {
+  display: none;
+  position: relative;
+  z-index: 3;
+  width: 2.7rem;
+  height: 2.7rem;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.03);
+  padding: 0.55rem;
+  cursor: pointer;
+}
+
+.siteMenuToggle span {
+  display: block;
+  width: 100%;
+  height: 2px;
+  background: #fff;
+  margin: 0.28rem 0;
+  transform-origin: center;
+  transition: transform 0.25s ease, opacity 0.25s ease;
+}
+
+.siteMenuToggle.isOpen span:nth-child(1) {
+  transform: translateY(6px) rotate(45deg);
+}
+
+.siteMenuToggle.isOpen span:nth-child(2) {
+  opacity: 0;
+}
+
+.siteMenuToggle.isOpen span:nth-child(3) {
+  transform: translateY(-6px) rotate(-45deg);
+}
+
+.siteNav {
   margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  position: relative;
+  z-index: 2;
+}
+
+.siteNavLink {
+  position: relative;
+  padding: 0.48rem 0.7rem;
+  color: rgba(255, 255, 255, 0.86);
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.82rem;
+  letter-spacing: 0.02em;
+  border-radius: 8px;
+  border: 1px solid transparent;
+  transition:
+    color 0.2s ease,
+    border-color 0.25s ease,
+    box-shadow 0.25s ease,
+    transform 0.2s ease;
+}
+
+.siteNavLink::after {
+  content: "";
+  position: absolute;
+  left: 0.7rem;
+  right: 0.7rem;
+  bottom: 0.2rem;
+  height: 2px;
+  transform: scaleX(0);
+  transform-origin: center;
+  background: linear-gradient(90deg, #ff003c, #00f3ff);
+  transition: transform 0.3s ease;
+}
+
+.siteNavLink:hover {
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.28);
+  transform: translateY(-1px);
+}
+
+.siteNavLink:hover::after,
+.siteNavLink.isActive::after {
+  transform: scaleX(1);
+}
+
+.siteNavLink.isActive {
+  color: #fff;
+  border-color: rgba(0, 243, 255, 0.48);
+  box-shadow: 0 0 16px rgba(0, 243, 255, 0.18);
+}
+
+.headerCloneButton.siteCloneCta {
+  margin-top: 0;
+  background: linear-gradient(100deg, #ff003c, #9c0228);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 6px 20px rgba(255, 0, 60, 0.3);
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.78rem;
+  transition: transform 0.2s ease, box-shadow 0.25s ease;
+}
+
+.headerCloneButton.siteCloneCta:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 28px rgba(255, 0, 60, 0.4);
+}
+
+@keyframes siteGlowPulse {
+  from {
+    opacity: 0.7;
+    transform: scale(1);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1.08);
+  }
+}
+
+.siteFooterGlow {
+  position: absolute;
+  inset: -35% -15%;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 14% 58%, rgba(255, 0, 60, 0.14), transparent 32%),
+    radial-gradient(circle at 78% 28%, rgba(0, 243, 255, 0.14), transparent 30%);
+  filter: blur(28px);
+}
+
+.siteFooterInner {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: 1.2fr 1fr auto;
+  align-items: center;
+  gap: 1rem;
+}
+
+.siteFooterTitle {
+  margin: 0;
+  color: #fff;
+  font-family: "Syncopate", sans-serif;
+  font-size: 0.86rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.siteFooterMeta {
+  margin: 0.35rem 0 0;
+  color: rgba(224, 224, 224, 0.7);
+  font-size: 0.84rem;
+}
+
+.siteFooterNav,
+.siteFooterActions {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.siteFooterNav a,
+.siteFooterGhost {
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 999px;
+  padding: 0.35rem 0.65rem;
+  color: rgba(255, 255, 255, 0.84);
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.74rem;
+  transition: color 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+}
+
+.siteFooterNav a:hover,
+.siteFooterGhost:hover {
+  color: #00f3ff;
+  border-color: rgba(0, 243, 255, 0.55);
+  transform: translateY(-1px);
+}
+
+.siteFooterBottom {
+  position: relative;
+  z-index: 2;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  padding-top: 0.6rem;
+  padding-bottom: 0.9rem;
+}
+
+.siteFooterBottom p {
+  margin: 0;
+  color: rgba(224, 224, 224, 0.68);
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.74rem;
 }
 
 .sectionHeader {
@@ -117,6 +357,16 @@ a {
   line-height: 1.6;
 }
 
+.htmlContent h2,
+.htmlContent h3 {
+  margin: 0.25rem 0 0;
+}
+
+.htmlContent p,
+.htmlContent li {
+  color: inherit;
+}
+
 .price {
   color: var(--muted);
   font-weight: 600;
@@ -125,6 +375,92 @@ a {
 .productImageLink {
   display: block;
   margin: -1rem -1rem 0.75rem;
+}
+
+.contentPage {
+  position: relative;
+}
+
+.contentHero {
+  position: relative;
+  overflow: hidden;
+  padding: 1.4rem;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: linear-gradient(145deg, rgba(14, 10, 16, 0.88), rgba(6, 20, 26, 0.86));
+  color: #fff;
+}
+
+.contentHero::after {
+  content: "";
+  position: absolute;
+  inset: auto -20% -70% auto;
+  width: 280px;
+  height: 280px;
+  background: radial-gradient(circle, rgba(0, 243, 255, 0.2), transparent 70%);
+  pointer-events: none;
+}
+
+.contentHero h1 {
+  margin: 0.25rem 0 0.35rem;
+}
+
+.contentHero p {
+  margin: 0;
+  color: rgba(224, 224, 224, 0.86);
+}
+
+.contentHeroCompact {
+  padding: 1.05rem 1.2rem;
+}
+
+.contentEyebrow {
+  margin: 0;
+  color: #00f3ff;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-family: "JetBrains Mono", monospace;
+}
+
+.contentNotice {
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  background: rgba(10, 10, 10, 0.45);
+  border-radius: 12px;
+  padding: 0.8rem 0.95rem;
+  color: rgba(224, 224, 224, 0.92);
+}
+
+.contentBodyCard {
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  background: rgba(10, 10, 10, 0.45);
+  color: #e0e0e0;
+}
+
+.postCard,
+.productCard {
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  background: rgba(10, 10, 10, 0.42);
+  color: #e0e0e0;
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.25s ease;
+}
+
+.postCard:hover,
+.productCard:hover {
+  transform: translateY(-2px);
+  border-color: rgba(0, 243, 255, 0.46);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+}
+
+.postCardTitle,
+.productCardTitle {
+  margin: 0;
+}
+
+.postCardExcerpt,
+.productCardExcerpt {
+  margin: 0.35rem 0 0;
+  color: rgba(224, 224, 224, 0.82);
 }
 
 .productImage {
@@ -856,9 +1192,60 @@ a {
 }
 
 @media (max-width: 640px) {
-  .nav {
-    flex-wrap: wrap;
-    justify-content: flex-end;
+  .siteFooterInner {
+    grid-template-columns: 1fr;
+    align-items: flex-start;
+  }
+
+  .siteFooterNav,
+  .siteFooterActions {
+    justify-content: flex-start;
+  }
+
+  .siteHeaderInner {
+    min-height: 4rem;
+  }
+
+  .siteMenuToggle {
+    display: inline-block;
+  }
+
+  .siteNav {
+    position: absolute;
+    right: 1rem;
+    top: calc(100% + 0.45rem);
+    margin-left: 0;
+    min-width: min(92vw, 320px);
+    display: grid;
+    gap: 0.35rem;
+    padding: 0.65rem;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 12px;
+    background: rgba(3, 3, 3, 0.95);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    transform: translateY(-8px) scale(0.98);
+    opacity: 0;
+    pointer-events: none;
+    transition:
+      opacity 0.2s ease,
+      transform 0.2s ease;
+  }
+
+  .siteNav.isOpen {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .siteNavLink {
+    width: 100%;
+    padding: 0.7rem;
+  }
+
+  .headerCloneButton.siteCloneCta {
+    width: 100%;
+    text-align: center;
   }
 
   .sectionHeader {

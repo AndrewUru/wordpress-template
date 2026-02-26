@@ -24,9 +24,14 @@ export default async function BlogPostPage({ params }: Props) {
   if (!post) notFound();
 
   return (
-    <article className="stack">
-      <h1>{post.title.rendered}</h1>
-      <HtmlContent html={post.content.rendered} />
+    <article className="stack contentPage">
+      <header className="contentHero contentHeroCompact">
+        <p className="contentEyebrow">Blog Post</p>
+        <h1>{post.title.rendered}</h1>
+      </header>
+      <section className="card contentBodyCard">
+        <HtmlContent html={post.content.rendered} />
+      </section>
     </article>
   );
 }

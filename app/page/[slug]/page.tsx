@@ -28,10 +28,15 @@ export default async function GenericPage({ params }: Props) {
   const hero = mapHeroFromAcf(page.acf);
 
   return (
-    <article className="stack">
+    <article className="stack contentPage">
       {hero ? <Hero {...hero} /> : null}
-      <h1>{page.title.rendered}</h1>
-      <HtmlContent html={page.content.rendered} />
+      <header className="contentHero contentHeroCompact">
+        <p className="contentEyebrow">Page</p>
+        <h1>{page.title.rendered}</h1>
+      </header>
+      <section className="card contentBodyCard">
+        <HtmlContent html={page.content.rendered} />
+      </section>
     </article>
   );
 }

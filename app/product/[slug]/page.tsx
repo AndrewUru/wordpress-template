@@ -37,7 +37,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 export default async function ProductPage({ params }: Props) {
   if (!isWooEnabled()) {
     return (
-      <section className="stack">
+      <section className="stack contentPage">
         <h1>WooCommerce not configured</h1>
         <p>Configure API keys to enable product pages.</p>
       </section>
@@ -50,10 +50,10 @@ export default async function ProductPage({ params }: Props) {
     const variations = product.type === "variable" ? await getProductVariations(product.id) : [];
 
     return (
-      <article className="stack">
+      <article className="stack contentPage">
         <ProductDetailClient product={product} variations={variations} wpBaseUrl={env.wpUrl} />
-        <section className="card">
-          <h2>Descripción</h2>
+        <section className="card contentBodyCard">
+          <h2>Descripcion</h2>
           <HtmlContent html={product.description || product.short_description || ""} />
         </section>
       </article>
@@ -61,7 +61,7 @@ export default async function ProductPage({ params }: Props) {
   } catch (error) {
     if (error instanceof HttpError && error.status === 401) {
       return (
-        <section className="stack">
+        <section className="stack contentPage">
           <h1>WooCommerce auth error</h1>
           <p>No se pudo autenticar contra WooCommerce REST API (HTTP 401).</p>
           <p>Revisa credenciales y permisos de tus API keys.</p>

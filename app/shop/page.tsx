@@ -50,7 +50,7 @@ function buildPaginationWindow(currentPage: number, totalPages: number) {
 export default async function ShopPage({ searchParams }: ShopPageProps) {
   if (!isWooEnabled()) {
     return (
-      <section className="stack">
+      <section className="stack contentPage">
         <h1>Shop</h1>
         <p>WooCommerce is not enabled.</p>
         <p>
@@ -76,7 +76,7 @@ export default async function ShopPage({ searchParams }: ShopPageProps) {
     const pageNumbers = buildPaginationWindow(productsPage.page, productsPage.totalPages);
 
     return (
-      <section className="stack shopPage">
+      <section className="stack shopPage contentPage">
         <header className="shopHero">
           <p className="shopEyebrow">WooCommerce Collection</p>
           <h1>Shop</h1>
@@ -207,7 +207,7 @@ export default async function ShopPage({ searchParams }: ShopPageProps) {
   } catch (error) {
     if (error instanceof HttpError && error.status === 401) {
       return (
-        <section className="stack">
+        <section className="stack contentPage">
           <h1>Shop</h1>
           <p>No se pudo autenticar contra WooCommerce REST API (HTTP 401).</p>
           <p>
